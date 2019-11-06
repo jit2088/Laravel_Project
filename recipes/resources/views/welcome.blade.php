@@ -1,99 +1,271 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('content')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+<!-- The Jumbotron Area -->
+<div id="jumbotron" class="jumbotron text-center">
+        <h1 class="display-3 mb-5">
+            <img src="{{asset('img/logo.png')}}" class="jumbotron-logo-img mr-2" alt="">
+        </h1>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+        <p class="lead jumbotron-title display-4 wow bounceInUp" data-wow-duration="2s" style="color: white;">Making everyday cooking fun !</p>
+        <br>
+        <p class="lead">
+            <!-- The home button 
+                    If the user is authenticated, let him rather see a create recipe button
+                -->
+            <a href="login.html" class="btn btn-primary btn-lg">Sign in</a>
+            <a href="login.html" class="btn btn-primary btn-lg">Join now</a>
+            <!-- End of the home button -->
+        </p>
+    </div>
+    <!-- End of the jumbotron area -->
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+<!-- Top rated recipes section -->
+<div class="container-fluid px-5 my-5">
+        <h1 class="display-4 text-center my-5 wow fadeInDown" style="padding: 30px 0px;">
+            <i class="ion ion-star"></i>
+            Top Rated Recipes</h1>
+        <br>
+        <div class="card-deck wow fadeIn" data-wow-duration="4s">
+            <div class="card mb-3">
+                <div class="img-zoom">
+                    <img class="card-img-top" style="height: 250px;" src="{{asset('img/meal-1.jpg')}}" alt="Card image cap">
                 </div>
-            @endif
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <a href="single-recipe.html">Pressurized African Cassava Golden Grains ( Garri )</a>
+                    </h5>
+                    <hr>
+                    <p class="text-sm mb-5">
+                        <small>
+                            <span class="text-muted">by</span> Elizabeth Funkirokeze</small>
+                        <span class="text-muted float-right">
+                            <i class="ion ion-clock"></i>
+                            35 min</span>
+                    </p>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                    <p class="h6 text-center">
+                        <span class="mr-3 h5">
+                            <i class="ion ion-happy-outline"></i> 12 </span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-sad-outline"></i> 5,301</span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-ios-heart"></i> 5,301</span>
+                    </p>
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+            </div>
+            <div class="card mb-3">
+                <div class="img-zoom">
+                    <img class="card-img-top" style="height: 250px;" src="img/meal-2.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <a href="single-recipe.html">Emergency Jollof and coconut stew</a>
+                    </h5>
+                    <hr>
+                    <p class="text-sm mb-5">
+                        <small>
+                            <span class="text-muted">by</span> Kati Frantz</small>
+                        <span class="text-muted float-right">
+                            <i class="ion ion-clock"></i>
+                            2 min</span>
+                    </p>
+                    <p class="h6 text-center">
+                        <span class="mr-3 h5">
+                            <i class="ion ion-happy-outline"></i> 12 </span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-sad-outline"></i> 5,301</span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-ios-heart"></i> 5,301</span>
+                    </p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="img-zoom">
+                    <img class="card-img-top" style="height: 250px;" src="img/meal-3.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <a href="single-recipe.html">Advanced Abacha and Egg sauce</a>
+                    </h5>
+                    <hr>
+                    <p class="text-sm mb-5">
+                        <small>
+                            <span class="text-muted">by</span> Elizabeth Funkirokeze</small>
+                        <span class="text-muted float-right">
+                            <i class="ion ion-clock"></i>
+                            35 min</span>
+                    </p>
+                    <p class="h6 text-center">
+                        <span class="mr-3 h5">
+                            <i class="ion ion-happy-outline"></i> 12 </span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-sad-outline"></i> 5,301</span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-ios-heart"></i> 5,301</span>
+                    </p>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+    <!-- End of top rated recipes section -->
+
+    <!-- Top rated chefs section -->
+    <div class="container px-5 my-5">
+        <h1 class="display-4 text-center my-5 wow fadeInDown" style="padding: 30px 0px;">
+            <i class="ion ion-person-stalker"></i>
+            Most Popular Chefs</h1>
+        <br>
+        <div class="row wow fadeIn" data-wow-duration="4s">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="hovereffect">
+                    <img class="img-fluid img-responsive" src="http://i.pravatar.cc/300" alt="">
+                    <div class="overlay">
+                        <p class="my-auto">
+                            <a href="profile.html">KATI FRANTZ</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="hovereffect">
+                    <img class="img-fluid img-responsive" src="http://i.pravatar.cc/300" alt="">
+                    <div class="overlay">
+                        <p class="my-auto">
+                            <a href="profile.html">SELINA RYANS</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="hovereffect">
+                    <img class="img-fluid img-responsive" src="http://i.pravatar.cc/300" alt="">
+                    <div class="overlay">
+                        <p class="my-auto">
+                            <a href="profile.html">ELLEN MICHEALS</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="hovereffect">
+                    <img class="img-fluid img-responsive" src="http://i.pravatar.cc/300" alt="">
+                    <div class="overlay">
+                        <p class="my-auto">
+                            <a href="profile.html">CLAUS LEBRONE</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of top rated chefs section -->
+
+    <!-- Most favorited recipes section -->
+    <div class="container-fluid px-5 my-5">
+        <h1 class="display-4 text-center my-5 wow fadeInDown" style="padding: 30px 0px;">
+            <i class="ion ion-heart"></i>
+            Most favorited Recipes</h1>
+        <br>
+        <div class="card-deck wow fadeIn" data-wow-duration="4s">
+            <div class="card mb-3">
+                <div class="img-zoom">
+                    <img class="card-img-top" style="height: 250px;" src="img/meal-4.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <a href="single-recipe.html">Pressurized African Cassava Golden Grains ( Garri )</a>
+                    </h5>
+                    <hr>
+                    <p class="text-sm mb-5">
+                        <small>
+                            <span class="text-muted">by</span> Elizabeth Funkirokeze</small>
+                        <span class="text-muted float-right">
+                            <i class="ion ion-clock"></i>
+                            35 min</span>
+                    </p>
+
+                    <p class="h6 text-center">
+                        <span class="mr-3 h5">
+                            <i class="ion ion-happy-outline"></i> 12 </span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-sad-outline"></i> 5,301</span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-ios-heart"></i> 5,301</span>
+                    </p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="img-zoom">
+                    <img class="card-img-top" style="height: 250px;" src="img/meal-5.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <a href="single-recipe.html">Emergency Jollof and coconut stew</a>
+                    </h5>
+                    <hr>
+                    <p class="text-sm mb-5">
+                        <small>
+                            <span class="text-muted">by</span> Kati Frantz</small>
+                        <span class="text-muted float-right">
+                            <i class="ion ion-clock"></i>
+                            2 min</span>
+                    </p>
+                    <p class="h6 text-center">
+                        <span class="mr-3 h5">
+                            <i class="ion ion-happy-outline"></i> 12 </span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-sad-outline"></i> 5,301</span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-ios-heart"></i> 5,301</span>
+                    </p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="img-zoom">
+                    <img class="card-img-top" style="height: 250px;" src="img/meal-6.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        <a href="single-recipe.html">Advanced Abacha and Egg sauce</a>
+                    </h5>
+                    <hr>
+                    <p class="text-sm mb-5">
+                        <small>
+                            <span class="text-muted">by</span> Elizabeth Funkirokeze</small>
+                        <span class="text-muted float-right">
+                            <i class="ion ion-clock"></i>
+                            35 min</span>
+                    </p>
+                    <p class="h6 text-center">
+                        <span class="mr-3 h5">
+                            <i class="ion ion-happy-outline"></i> 12 </span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-sad-outline"></i> 5,301</span>
+                        <span class="mr-3 h5">
+                            <i class="ion ion-ios-heart"></i> 5,301</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of top rated recipes section -->
+    @endsection
+
+@section('scripts')
+    <script src="{{asset('js/vegas.min.js')}}"></script>
+    <script>
+        $("#jumbotron").vegas({
+            timer: false,
+            shuffle: true,
+            transition: 'fade',
+            animation: 'kenburns',
+            slides: [
+                { src: 'img/banner-1.jpg' },
+                { src: 'img/banner-2.jpg' },
+                { src: 'img/banner-3.jpg' }
+            ]
+        });
+    </script>
+@endsection
